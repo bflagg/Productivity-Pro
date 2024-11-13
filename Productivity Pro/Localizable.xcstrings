@@ -803,6 +803,9 @@
         }
       }
     },
+    "Edit" : {
+
+    },
     "Ein Fehler ist aufgetreten." : {
       "localizations" : {
         "en" : {
@@ -1734,9 +1737,6 @@
           }
         }
       }
-    },
-    "Prüfungen" : {
-
     },
     "QRShare" : {
       "localizations" : {

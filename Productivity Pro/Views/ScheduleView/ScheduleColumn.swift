@@ -23,11 +23,11 @@ struct ScheduleColumn: View {
         LazyVStack(alignment: .leading) {
             if day.subjects.isEmpty == false || isEditing == true {
                 Text(String(localized: String.LocalizationValue(day.id)))
-                    .font(.callout)
+                    .font(.subheadline)
                     .foregroundStyle(Color.secondary)
                     .lineLimit(1)
                     .padding(.top, 10)
-                    .padding(.bottom, 3)
+                    .padding(.bottom, 1)
                     .padding(.leading)
                     .transition(.opacity)
             }

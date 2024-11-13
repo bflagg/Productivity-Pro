@@ -45,31 +45,13 @@ struct ScheduleView: View {
         ScrollView(.vertical) {
             ScrollView(.horizontal) {
                 LazyHStack(alignment: .top, spacing: 0) {
-                    ScheduleColumn(
-                        isEditing: $isEditing, day: $schedule.value[0]
-                    )
-                    .padding(.horizontal)
-                    .containerRelativeFrame(.horizontal)
-                    ScheduleColumn(
-                        isEditing: $isEditing, day: $schedule.value[1]
-                    )
-                    .padding(.horizontal)
-                    .containerRelativeFrame(.horizontal)
-                    ScheduleColumn(
-                        isEditing: $isEditing, day: $schedule.value[2]
-                    )
-                    .padding(.horizontal)
-                    .containerRelativeFrame(.horizontal)
-                    ScheduleColumn(
-                        isEditing: $isEditing, day: $schedule.value[3]
-                    )
-                    .padding(.horizontal)
-                    .containerRelativeFrame(.horizontal)
-                    ScheduleColumn(
-                        isEditing: $isEditing, day: $schedule.value[4]
-                    )
-                    .padding(.horizontal)
-                    .containerRelativeFrame(.horizontal)
+                    ForEach(0..<5) { index in
+                        ScheduleColumn(
+                            isEditing: $isEditing, day: $schedule.value[index]
+                        )
+                        .padding(.horizontal)
+                        .containerRelativeFrame(.horizontal)
+                    }
                 }
                 .scrollTargetLayout()
             }
