@@ -23,7 +23,7 @@ struct ScheduleAddSubject: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section {
+                Section("Fach auswählen") {
                     TextField("Raum", text: $text)
                         .frame(height: 30)
                         .disabled(subject == "")
@@ -91,11 +91,11 @@ struct ScheduleAddSubject: View {
                 }
                 .labelsHidden()
                 .pickerStyle(.inline)
-                
+                .listSectionSpacing(18)
             }
             .environment(\.defaultMinListRowHeight, 10)
             .scrollIndicators(.hidden)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(isAdd ? "Fach hinzufügen" : "Fach bearbeiten")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(isAdd ? "Hinzufügen" : "Bearbeiten") {

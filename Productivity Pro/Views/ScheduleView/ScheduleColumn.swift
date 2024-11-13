@@ -54,8 +54,8 @@ struct ScheduleColumn: View {
             }
             .padding(.bottom, 15)
         }
-        .animation(.smooth(duration: 0.2), value: isEditing)
-        .animation(.smooth(duration: 0.2), value: day.subjects.count)
+        .animation(.default, value: isEditing)
+        .animation(.default, value: day.subjects.count)
         .frame(maxWidth: .infinity)
         .sheet(isPresented: $addSubject) {
             ScheduleAddSubject(
@@ -121,7 +121,7 @@ struct ScheduleColumn: View {
                             Color.accentColor.tertiary
                         )
                 }
-                .transition(.blurReplace())
+                .contentTransition(.symbolEffect)
                 .padding(.trailing, 10)
             }
         }
@@ -136,13 +136,14 @@ struct ScheduleColumn: View {
                             .foregroundStyle(Color.accentColor.quaternary)
                     } else {
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundStyle(Color(UIColor.secondarySystemGroupedBackground))
+                            .foregroundStyle(
+                                Color(UIColor.secondarySystemGroupedBackground)
+                            )
                     }
                 }
             }
-            .animation(
-                .smooth(duration: 0.2), value: scheduleSubject.isMarked
-            )
+            .transition(.blurReplace)
+            .animation(.default, value: scheduleSubject.isMarked)
         }
         .onTapGesture(count: 2) {
             if isEditing == false {
@@ -156,13 +157,10 @@ struct ScheduleColumn: View {
     @ViewBuilder func PlusButton() -> some View {
         HStack {
             Image(systemName: "plus")
-                .foregroundStyle(.white)
-                .background {
-                    Circle()
-                        .frame(width: 35, height: 35)
-                        .foregroundStyle(Color.secondary)
-                }
+                .foregroundStyle(.primary)
                 .frame(width: 35, height: 35)
+                .background(.ultraThickMaterial)
+                .clipShape(.circle)
                 .transition(.scale(0, anchor: .leading))
             
             Text("Hinzufügen")
@@ -195,8 +193,4 @@ struct ScheduleColumn: View {
         
         return subject
     }
-}
-
-#Preview {
-    ScheduleViewContainer()
 }

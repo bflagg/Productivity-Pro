@@ -31,6 +31,7 @@ struct ScheduleView: View {
                     Color.primary, Color.accentColor, Color.secondary
                 )
                 .transition(.identity)
+                
             } else {
                 if hsc == .regular {
                     StaticView()
@@ -64,25 +65,11 @@ struct ScheduleView: View {
     @ViewBuilder func StaticView() -> some View {
         ScrollView(.vertical) {
             HStack(alignment: .top) {
-                ScheduleColumn(
-                    isEditing: $isEditing, day: $schedule.value[0]
-                )
-                
-                ScheduleColumn(
-                    isEditing: $isEditing, day: $schedule.value[1]
-                )
-               
-                ScheduleColumn(
-                    isEditing: $isEditing, day: $schedule.value[2]
-                )
-                
-                ScheduleColumn(
-                    isEditing: $isEditing, day: $schedule.value[3]
-                )
-                
-                ScheduleColumn(
-                    isEditing: $isEditing, day: $schedule.value[4]
-                )
+                ForEach(0..<5) { index in
+                    ScheduleColumn(
+                        isEditing: $isEditing, day: $schedule.value[index]
+                    )
+                }
             }
         }
         .padding(.horizontal)
