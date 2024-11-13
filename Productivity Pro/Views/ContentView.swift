@@ -30,6 +30,8 @@ struct ContentView: View {
                 FileSystemView(contentObjects: contentObjects)
             case .search:
                 Text("Search View")
+            case .trash:
+                TrashView(contentObjects: contentObjects)
             case .library:
                 Text("Library View")
             case .tasks:

@@ -31,6 +31,10 @@ struct SidebarView: View {
                         Label("Suchen", systemImage: "magnifyingglass")
                     }
                     
+                    NavigationLink(value: ViewPresentation.trash) {
+                        Label("Papierkorb", systemImage: "trash")
+                    }
+                    
                     NavigationLink(value: ViewPresentation.library) {
                         Label("Bibliothek", systemImage: "building.columns.fill")
                     }
@@ -65,22 +69,6 @@ struct SidebarView: View {
                 }
             }
             .navigationTitle("Productivity Pro")
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Footer()
-                }
-            }
         }
-    }
-    
-    @ViewBuilder func Footer() -> some View {
-        Group {
-            Text("Entwickelt mit ") +
-            Text("\(Image(systemName: "heart.fill"))")
-                .foregroundStyle(Color.red) +
-            Text(" für Schüler")
-        }
-        .font(.caption)
-        .foregroundStyle(Color.secondary)
     }
 }

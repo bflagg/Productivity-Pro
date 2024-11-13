@@ -17,9 +17,6 @@
         }
       }
     },
-    " für Schüler" : {
-
-    },
     " und tippe dann auf " : {
 
     },
@@ -864,9 +861,6 @@
           }
         }
       }
-    },
-    "Entwickelt mit " : {
-
     },
     "Erstellen" : {
       "localizations" : {
@@ -1735,6 +1729,9 @@
         }
       }
     },
+    "Prüfungen" : {
+
+    },
     "QRShare" : {
       "localizations" : {
         "en" : {
@@ -2031,9 +2028,6 @@
           }
         }
       }
-    },
-    "Tests" : {
-
     },
     "Tests View" : {
 
