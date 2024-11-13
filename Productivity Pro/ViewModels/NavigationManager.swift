@@ -20,7 +20,6 @@ enum ViewPresentation {
     case tasks
     case schedule
     case exams
-    case grades
     case subjects
     case general
 }

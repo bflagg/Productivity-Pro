@@ -40,8 +40,6 @@ struct ContentView: View {
                 ScheduleViewContainer()
             case .exams:
                 Text("Tests View")
-            case .grades:
-                Text("Grades View")
             case .subjects:
                 SubjectSettings()
             case .general:

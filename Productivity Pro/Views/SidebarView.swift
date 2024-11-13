@@ -52,10 +52,6 @@ struct SidebarView: View {
                     NavigationLink(value: ViewPresentation.exams) {
                         Label("Prüfungen", systemImage: "graduationcap.fill")
                     }
-                    
-                    NavigationLink(value: ViewPresentation.grades) {
-                        Label("Noten", systemImage: "star.fill")
-                    }
                 }
                 
                 Section("Einstellungen") {
@@ -69,6 +65,22 @@ struct SidebarView: View {
                 }
             }
             .navigationTitle("Productivity Pro")
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Footer()
+                }
+            }
         }
+    }
+    
+    @ViewBuilder func Footer() -> some View {
+        Group {
+            Text("Entwickelt mit ") +
+            Text("\(Image(systemName: "heart.fill"))")
+                .foregroundStyle(Color.red) +
+            Text(" für Schüler")
+        }
+        .font(.caption)
+        .foregroundStyle(Color.secondary)
     }
 }
