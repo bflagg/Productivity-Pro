@@ -9,7 +9,6 @@ import SwiftData
 import SwiftUI
 
 struct SubjectSettings: View {
-    @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
     
     @Query(
@@ -34,13 +33,13 @@ struct SubjectSettings: View {
     @State var purchaseView: Bool = false
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color(UIColor.systemGroupedBackground)
-                    .ignoresSafeArea(.all)
-                
-                List {
-                    Section(subjects.rawValue.isEmpty ? "" : "Meine Fächer") {
+        ZStack {
+            Color(UIColor.systemGroupedBackground)
+                .ignoresSafeArea(.all)
+            
+            List {
+                if subjects.value.isEmpty == false {
+                    Section("Meine Fächer") {
                         ForEach(
                             subjects.value.sorted(by: { $0.title < $1.title })
                         ) { subject in
@@ -51,52 +50,46 @@ struct SubjectSettings: View {
                         }
                     }
                 }
-                .scrollContentBackground(.hidden)
-                .navigationTitle("Fächer")
-                .toolbarRole(.browser)
-                .navigationBarBackButtonHidden()
-                .toolbar {
-                    ToolbarItemGroup(placement: .topBarLeading) {
-                        Button(action: { dismiss() }) {
-                            Label("Zurück", systemImage: "chevron.left")
-                        }
+            }
+            .animation(.default, value: subjects.value.count)
+            .scrollDisabled(subjects.value.isEmpty)
+            .scrollContentBackground(.hidden)
+            .navigationTitle("Fächer")
+            .sheet(isPresented: $addSubject) {
+                AddSubject(addSubject: $addSubject)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Fach hinzufügen", systemImage: "plus") {
+                        addSubject.toggle()
                     }
                 }
-                .sheet(isPresented: $addSubject) {
-                    AddSubject(addSubject: $addSubject)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Fach hinzufügen", systemImage: "plus") {
-                            addSubject.toggle()
-                        }
-                    }
-                }
-                .overlay {
-                    if subjects.value.isEmpty {
-                        ContentUnavailableView(label: {
-                            Label(
-                                "Du hast noch keine Fächer erstellt.",
-                                systemImage: "tray.2"
-                            )
-                            .foregroundStyle(Color.primary, Color.accentColor)
-                        }, description: {
-                            Group {
-                                Text("Tippe auf ") +
-                                    Text(Image(systemName: "plus"))
-                                    .foregroundStyle(Color.accentColor) +
-                                    Text(", um eine neues Fach hinzuzufügen.")
-                            }
-                            .foregroundStyle(Color.primary)
-                        })
-                        .transition(.asymmetric(
-                            insertion: .opacity, removal: .identity
-                        ))
-                    }
-                }
-                .animation(.easeInOut(duration: 0.1), value: subjects.value.count)
             }
         }
+        .overlay {
+            if subjects.value.isEmpty { EmptyView() }
+        }
+    }
+    
+    @ViewBuilder func EmptyView() -> some View {
+        ContentUnavailableView(label: {
+            Label(
+                "Du hast noch keine Fächer erstellt.",
+                systemImage: "tray.2"
+            )
+            .foregroundStyle(Color.primary, Color.accentColor)
+        }, description: {
+            Group {
+                Text("Tippe auf ") +
+                Text(Image(systemName: "plus"))
+                    .foregroundStyle(Color.accentColor) +
+                Text(", um eine neues Fach hinzuzufügen.")
+            }
+            .foregroundStyle(Color.primary)
+        })
+        .transition(.asymmetric(
+            insertion: .opacity, removal: .identity
+        ))
     }
 }
 

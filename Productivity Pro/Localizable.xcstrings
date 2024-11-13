@@ -17,6 +17,9 @@
         }
       }
     },
+    " für Schüler" : {
+
+    },
     " und tippe dann auf " : {
 
     },
@@ -583,6 +586,9 @@
         }
       }
     },
+    "Design" : {
+
+    },
     "Dienstag" : {
       "localizations" : {
         "en" : {
@@ -862,6 +868,9 @@
         }
       }
     },
+    "Entwickelt mit " : {
+
+    },
     "Erstellen" : {
       "localizations" : {
         "en" : {
@@ -1117,9 +1126,6 @@
           }
         }
       }
-    },
-    "Grades View" : {
-
     },
     "Grün" : {
       "localizations" : {
@@ -1513,7 +1519,7 @@
         }
       }
     },
-    "Noten" : {
+    "Neues Fach" : {
 
     },
     "Notentlinien" : {

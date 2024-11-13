@@ -54,7 +54,7 @@ struct AppIconSettings: View {
             }
         }
     }
-
+    
     @ViewBuilder func Icon(_ image: String) -> some View {
         Image(image)
             .interpolation(.high)

@@ -32,12 +32,10 @@ struct AddSubject: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section {
+                Section("Neues Fach") {
                     TextField("Titel", text: $subject.title)
                         .frame(height: 30)
-                }
-                    
-                Section {
+                
                     ColorPicker(
                         "Farbe",
                         selection: $color,
@@ -78,7 +76,7 @@ struct AddSubject: View {
                 
             }
             .environment(\.defaultMinListRowHeight, 10)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Fach hinzufügen")
             .scrollIndicators(.hidden)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

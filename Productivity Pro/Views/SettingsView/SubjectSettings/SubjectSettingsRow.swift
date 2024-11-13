@@ -42,10 +42,8 @@ struct SubjectSettingsRow: View {
             Text(subject.title)
                 .padding(.leading, 7)
         }
-        .swipeActions(edge: .leading, allowsFullSwipe: true) {
-            Button(action: {
-                isAlert.toggle()
-            }) {
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+            Button(action: { isAlert.toggle() }) {
                 Image(systemName: "trash.fill")
             }
             .tint(Color.red)
@@ -65,8 +63,8 @@ struct SubjectSettingsRow: View {
         for day in schedule.value {
             for sSubject in day.subjects {
                 if sSubject.subject == subject.title {
-                    
-                    guard let indexD = schedule.value.firstIndex(of: day) else { continue }
+                    guard let indexD = schedule.value.firstIndex(of: day) else { continue
+                    }
                     guard let indexS = day.subjects.firstIndex(of: sSubject) else { continue }
                     let schedSubject = ScheduleSubject(subject: "", room: "")
                     
