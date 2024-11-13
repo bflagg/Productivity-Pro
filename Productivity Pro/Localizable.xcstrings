@@ -1105,6 +1105,9 @@
     "Gemini" : {
 
     },
+    "Gemini View" : {
+
+    },
     "Gepunktet" : {
       "localizations" : {
         "en" : {
@@ -1120,6 +1123,9 @@
           }
         }
       }
+    },
+    "Grades View" : {
+
     },
     "Grün" : {
       "localizations" : {
@@ -1336,6 +1342,9 @@
         }
       }
     },
+    "Library View" : {
+
+    },
     "Lila" : {
       "localizations" : {
         "en" : {
@@ -1509,6 +1518,9 @@
           }
         }
       }
+    },
+    "Noten" : {
+
     },
     "Notentlinien" : {
       "localizations" : {
@@ -1851,6 +1863,9 @@
         }
       }
     },
+    "Search View" : {
+
+    },
     "Sechseck" : {
       "localizations" : {
         "en" : {
@@ -2016,6 +2031,12 @@
           }
         }
       }
+    },
+    "Tests" : {
+
+    },
+    "Tests View" : {
+
     },
     "Text" : {
       "localizations" : {

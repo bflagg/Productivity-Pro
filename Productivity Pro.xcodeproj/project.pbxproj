@@ -154,6 +154,7 @@
 		BB84DD202B8E7DDD002C2A9A /* VUModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84DD1E2B8E7DDD002C2A9A /* VUModifier.swift */; };
 		BB84DF572CE4FAD10091FB34 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84DF562CE4FAD10091FB34 /* SidebarView.swift */; };
 		BB84DF592CE4FB4D0091FB34 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84DF582CE4FB4D0091FB34 /* NotificationManager.swift */; };
+		BB84DF5B2CE4FE560091FB34 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84DF5A2CE4FE560091FB34 /* NavigationManager.swift */; };
 		BB854AE029E06531002EDF7A /* PagingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB854ADF29E06531002EDF7A /* PagingModifier.swift */; };
 		BB8586912AE1DE4300C5875C /* InspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8586902AE1DE4300C5875C /* InspectorView.swift */; };
 		BB8586932AE1E37C00C5875C /* StyleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8586922AE1E37C00C5875C /* StyleContainerView.swift */; };
@@ -472,6 +473,7 @@
 		BB84DD1E2B8E7DDD002C2A9A /* VUModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VUModifier.swift; sourceTree = "<group>"; };
 		BB84DF562CE4FAD10091FB34 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		BB84DF582CE4FB4D0091FB34 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		BB84DF5A2CE4FE560091FB34 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		BB854ADF29E06531002EDF7A /* PagingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingModifier.swift; sourceTree = "<group>"; };
 		BB8586902AE1DE4300C5875C /* InspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorView.swift; sourceTree = "<group>"; };
 		BB8586922AE1E37C00C5875C /* StyleContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleContainerView.swift; sourceTree = "<group>"; };
@@ -1040,6 +1042,7 @@
 				BB7E2FD82BF1477B002E5689 /* MDConverter.swift */,
 				BBBCACB22A25461900C23B2C /* CalculatorModel.swift */,
 				BB84DF582CE4FB4D0091FB34 /* NotificationManager.swift */,
+				BB84DF5A2CE4FE560091FB34 /* NavigationManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1699,6 +1702,7 @@
 				BB1321EA2985EA87006AD59D /* DragType.swift in Sources */,
 				BB174F552A1051B400F753F6 /* Date.swift in Sources */,
 				BB84DD172B8E78EF002C2A9A /* TextfieldItemVContainer.swift in Sources */,
+				BB84DF5B2CE4FE560091FB34 /* NavigationManager.swift in Sources */,
 				BB4A93F22AB09FFB00C3AED6 /* HomeworkView.swift in Sources */,
 				BBEF06D82ABF7106007EDFF6 /* HomeworkItem.swift in Sources */,
 				BB84DF592CE4FB4D0091FB34 /* NotificationManager.swift in Sources */,

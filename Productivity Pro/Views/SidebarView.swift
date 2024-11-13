@@ -8,66 +8,67 @@
 import SwiftUI
 
 struct SidebarView: View {
+    @Environment(NavigationManager.self) var navigationManager
+    
     @State var notifications = NotificationManager()
     var contentObjects: [ContentObject]
     
     var body: some View {
-        List {
-            NavigationLink {
-                Text("Gemini")
-            } label: {
-                Label("Gemini", systemImage: "sparkles")
-            }
+        Group {
+            @Bindable var navigation = navigationManager
             
-            Section("Notizen") {
-                NavigationLink {
-                    FileSystemView(contentObjects: contentObjects)
-                } label: {
-                    Label("Finder", systemImage: "doc.fill")
+            List(selection: $navigation.selection) {
+                NavigationLink(value: "G") {
+                    Label("Gemini", systemImage: "sparkles")
                 }
                 
-                NavigationLink {
-                    Text("Suchen")
-                } label: {
-                    Label("Suchen", systemImage: "magnifyingglass")
-                }
-            }
-            
-            Section("Organisation") {
-                NavigationLink {
-                    HomeworkView()
-                        .onAppear {
-                            notifications.askPermission()
-                        }
-                } label: {
-                    Label("Aufgaben", systemImage: "checklist")
-                }
-                
-                NavigationLink {
-                    ScheduleViewContainer()
-                } label: {
-                    Label("Stundenplan", systemImage: "calendar")
-                }
-            }
-            
-            Section("Einstellungen") {
-                NavigationLink {
+                Section("Notizen") {
+                    NavigationLink(value: ViewPresentation.finder) {
+                        Label("Finder", systemImage: "doc.fill")
+                    }
                     
-                } label: {
-                    Label("Fächer", systemImage: "tray.2.fill")
+                    NavigationLink(value: ViewPresentation.search) {
+                        Label("Suchen", systemImage: "magnifyingglass")
+                    }
+                    
+                    NavigationLink(value: ViewPresentation.library) {
+                        Label("Bibliothek", systemImage: "building.columns.fill")
+                    }
                 }
                 
-                NavigationLink {
-                    PPSettingsView()
-                } label: {
-                    Label("Allgemein", systemImage: "gearshape.fill")
+                Section("Organisation") {
+                    NavigationLink(value:  ViewPresentation.tasks) {
+                        Label("Aufgaben", systemImage: "checklist")
+                    }
+                    
+                    NavigationLink(value: ViewPresentation.schedule) {
+                        Label("Stundenplan", systemImage: "calendar")
+                    }
+                    
+                    NavigationLink(value: ViewPresentation.exams) {
+                        Label("Prüfungen", systemImage: "graduationcap.fill")
+                    }
+                    
+                    NavigationLink(value: ViewPresentation.grades) {
+                        Label("Noten", systemImage: "star.fill")
+                    }
+                }
+                
+                Section("Einstellungen") {
+                    NavigationLink(value: ViewPresentation.subjects) {
+                        Label("Fächer", systemImage: "tray.2.fill")
+                    }
+                    
+                    NavigationLink(value: ViewPresentation.general) {
+                        Label("Allgemein", systemImage: "gearshape.fill")
+                    }
                 }
             }
-        }
-        .navigationTitle("Productivity Pro")
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                Footer()
+            .navigationTitle("Productivity Pro")
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Footer()
+                }
             }
         }
     }

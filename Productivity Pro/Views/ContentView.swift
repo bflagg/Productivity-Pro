@@ -17,12 +17,36 @@ struct ContentView: View {
     
     @State var toolManager: ToolManager = .init()
     @State var subviewManager: SubviewManager = .init()
+    @State var navigationManager: NavigationManager = .init()
     
     var body: some View {
         NavigationSplitView(sidebar: {
             SidebarView(contentObjects: contentObjects)
         }) {
-            
+            switch navigationManager.selection {
+            case .gemini:
+                Text("Gemini View")
+            case .finder:
+                FileSystemView(contentObjects: contentObjects)
+            case .search:
+                Text("Search View")
+            case .library:
+                Text("Library View")
+            case .tasks:
+                HomeworkView()
+            case .schedule:
+                ScheduleViewContainer()
+            case .exams:
+                Text("Tests View")
+            case .grades:
+                Text("Grades View")
+            case .subjects:
+                SubjectSettings()
+            case .general:
+                PPSettingsView()
+            case .none:
+                Text("Productivity Pro")
+            }
         }
         .disabled(toolManager.showProgress)
         .modifier(
@@ -34,6 +58,7 @@ struct ContentView: View {
         .scrollDisabled(toolManager.showProgress)
         .environment(toolManager)
         .environment(subviewManager)
+        .environment(navigationManager)
         .scrollIndicators(.hidden)
         .overlay {
             if toolManager.showProgress {
