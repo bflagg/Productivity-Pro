@@ -53,12 +53,7 @@ struct ContentView: View {
             Tab {
                 PPSettingsView()
             } label: {
-                if hsc == .compact {
-                    Label("Einstellungen", systemImage: "gearshape.fill")
-                        .labelStyle(.titleAndIcon)
-                } else {
-                    Image(systemName: "gearshape.fill")
-                }
+                Label("Einstellungen", systemImage: "gearshape.fill")
             }
         }
         .disabled(toolManager.showProgress)

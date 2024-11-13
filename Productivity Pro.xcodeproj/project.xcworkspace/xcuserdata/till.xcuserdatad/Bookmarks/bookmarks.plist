@@ -18,7 +18,7 @@
 					<key>StartingLineNumber</key>
 					<string>65</string>
 					<key>Timestamp</key>
-					<string>750986492.535907</string>
+					<string>753202503.1199729</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,16 +34,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>//            OpenURL(
+				<string>        .scrollDisabled(toolManager.showProgress)
 </string>
 				<key>leading</key>
-				<string>        .disabled(toolManager.showProgress)
-//        .modifier(
+				<string>//            ) { selectedTab = 0 }
+//        )
 </string>
 				<key>trailing</key>
-				<string>//                objects: contentObjects,
-//                contentObjects: contentObjects
-//            ) { selectedTab = 0 }
+				<string>        .environment(toolManager)
+        .environment(subviewManager)
+        .scrollIndicators(.hidden)
 </string>
 			</dict>
 			<key>title</key>
