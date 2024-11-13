@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>66</string>
+					<string>34</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>65</string>
+					<string>33</string>
 					<key>Timestamp</key>
-					<string>753202503.1199729</string>
+					<string>753203982.120894</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -37,8 +37,8 @@
 				<string>        .scrollDisabled(toolManager.showProgress)
 </string>
 				<key>leading</key>
-				<string>//            ) { selectedTab = 0 }
-//        )
+				<string>            ) { }
+        )
 </string>
 				<key>trailing</key>
 				<string>        .environment(toolManager)

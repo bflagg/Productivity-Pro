@@ -17,6 +17,9 @@
         }
       }
     },
+    " für Schüler" : {
+
+    },
     " und tippe dann auf " : {
 
     },
@@ -862,6 +865,9 @@
         }
       }
     },
+    "Entwickelt mit " : {
+
+    },
     "Erstellen" : {
       "localizations" : {
         "en" : {
@@ -990,6 +996,9 @@
         }
       }
     },
+    "Finder" : {
+
+    },
     "Form" : {
       "localizations" : {
         "en" : {
@@ -1092,6 +1101,9 @@
           }
         }
       }
+    },
+    "Gemini" : {
+
     },
     "Gepunktet" : {
       "localizations" : {
@@ -1606,6 +1618,9 @@
         }
       }
     },
+    "Organisation" : {
+
+    },
     "Papierkorb" : {
       "localizations" : {
         "en" : {
@@ -1977,7 +1992,6 @@
       }
     },
     "Suchen" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -19,50 +19,18 @@ struct ContentView: View {
     @State var subviewManager: SubviewManager = .init()
     
     var body: some View {
-        TabView {
-            Tab {
-                FileSystemView(contentObjects: contentObjects)
-            } label: {
-                Label("Notizen", systemImage: "doc.fill")
-            }
+        NavigationSplitView(sidebar: {
+            SidebarView(contentObjects: contentObjects)
+        }) {
             
-            Tab {
-                ScheduleViewContainer()
-            } label: {
-                Label("Stundenplan", systemImage: "calendar")
-            }
-              
-            Tab {
-                HomeworkView()
-                    .onAppear { askNotificationPermission() }
-            } label: {
-                Label("Aufgaben", systemImage: "checklist")
-            }
-            
-//            Tab() {
-//                Text("Search")
-//            } label: {
-//                if hsc == .compact {
-//                    Label("Suchen", systemImage: "magnifyingglass")
-//                        .labelStyle(.titleAndIcon)
-//                } else {
-//                    Image(systemName: "magnifyingglass")
-//                }
-//            }
-          
-            Tab {
-                PPSettingsView()
-            } label: {
-                Label("Einstellungen", systemImage: "gearshape.fill")
-            }
         }
         .disabled(toolManager.showProgress)
-//        .modifier(
-//            OpenURL(
-//                objects: contentObjects,
-//                contentObjects: contentObjects
-//            ) { selectedTab = 0 }
-//        )
+        .modifier(
+            OpenURL(
+                objects: contentObjects,
+                contentObjects: contentObjects
+            ) { }
+        )
         .scrollDisabled(toolManager.showProgress)
         .environment(toolManager)
         .environment(subviewManager)
@@ -89,13 +57,11 @@ struct ContentView: View {
     }
     
     @MainActor func review() {
+        #if DEBUG
+        #else
         if contentObjects.count > 3 {
             requestReview()
         }
-    }
-    
-    func askNotificationPermission() {
-        UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.alert, .badge, .sound]) { _, _ in }
+        #endif
     }
 }
