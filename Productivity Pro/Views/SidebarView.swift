@@ -49,9 +49,9 @@ struct SidebarView: View {
                         Label("Stundenplan", systemImage: "calendar")
                     }
                     
-                    NavigationLink(value: ViewPresentation.exams) {
-                        Label("Prüfungen", systemImage: "graduationcap.fill")
-                    }
+//                    NavigationLink(value: ViewPresentation.exams) {
+//                        Label("Prüfungen", systemImage: "graduationcap.fill")
+//                    }
                 }
                 
                 Section("Einstellungen") {
