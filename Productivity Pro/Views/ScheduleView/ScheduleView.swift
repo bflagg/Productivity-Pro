@@ -24,8 +24,8 @@ struct ScheduleView: View {
             if subjects.value.isEmpty {
                 ContentUnavailableView(
                     "Du hast noch keine Fächer erstellt.",
-                    systemImage: "tray.2",
-                    description: Text("Gehe in die Einstellungen und tippe anschließend auf \"Fächer\".")
+                    systemImage: "tray.2.fill",
+                    description: Text("Gehe unter Einstellungen auf \"Fächer\".")
                 )
                 .foregroundStyle(
                     Color.primary, Color.accentColor, Color.secondary
