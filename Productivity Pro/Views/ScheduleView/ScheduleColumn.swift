@@ -75,15 +75,12 @@ struct ScheduleColumn: View {
         HStack {
             Image(systemName: getSubject(from: scheduleSubject).icon)
                 .foregroundStyle(.white)
-                .background {
-                    Circle()
-                        .frame(width: 35, height: 35)
-                        .foregroundStyle(
-                            Color(rawValue: getSubject(from: scheduleSubject).color)
-                        )
-                        .opacity(scheduleSubject.subject == "" ? 0 : 1)
-                }
                 .frame(width: 35, height: 35)
+                .background(
+                    Color(rawValue: getSubject(from: scheduleSubject).color)
+                )
+                .opacity(scheduleSubject.subject == "" ? 0 : 1)
+                .clipShape(.circle)
             
             VStack {
                 Text(getSubject(from: scheduleSubject).title)

@@ -10,7 +10,7 @@ import SwiftUI
 extension Color: @retroactive RawRepresentable {
     public init(rawValue: String) {
         guard let data = Data(base64Encoded: rawValue) else {
-            self = .black
+            self = .clear
             return
         }
         
@@ -20,11 +20,11 @@ extension Color: @retroactive RawRepresentable {
             ) {
                 self = Color(color)
             } else {
-                self = .black
+                self = .clear
             }
             
         } catch {
-            self = .black
+            self = .clear
         }
     }
     
