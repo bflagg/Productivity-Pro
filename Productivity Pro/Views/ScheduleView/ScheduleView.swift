@@ -21,18 +21,7 @@ struct ScheduleView: View {
             Color(UIColor.systemGroupedBackground)
                 .ignoresSafeArea(.all)
         
-            if subjects.value.isEmpty {
-                ContentUnavailableView(
-                    "Du hast noch keine Fächer erstellt.",
-                    systemImage: "tray.2.fill",
-                    description: Text("Gehe unter Einstellungen auf \"Fächer\".")
-                )
-                .foregroundStyle(
-                    Color.primary, Color.accentColor, Color.secondary
-                )
-                .transition(.identity)
-                
-            } else {
+            if !subjects.value.isEmpty {
                 if hsc == .regular {
                     StaticView()
                 } else {

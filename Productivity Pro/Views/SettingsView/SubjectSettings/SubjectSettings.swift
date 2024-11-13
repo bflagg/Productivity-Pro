@@ -51,7 +51,7 @@ struct SubjectSettings: View {
                     }
                 }
             }
-            .animation(.default, value: subjects.value.count)
+            .animation(.bouncy, value: subjects.value.count)
             .scrollDisabled(subjects.value.isEmpty)
             .scrollContentBackground(.hidden)
             .navigationTitle("Fächer")
@@ -75,7 +75,7 @@ struct SubjectSettings: View {
         ContentUnavailableView(label: {
             Label(
                 "Du hast noch keine Fächer erstellt.",
-                systemImage: "tray.2"
+                systemImage: "tray.2.fill"
             )
             .foregroundStyle(Color.primary, Color.accentColor)
         }, description: {

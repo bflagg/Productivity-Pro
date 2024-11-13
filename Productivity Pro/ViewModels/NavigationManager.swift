@@ -16,7 +16,6 @@ enum ViewPresentation {
     case finder
     case search
     case trash
-    case library
     case tasks
     case schedule
     case exams

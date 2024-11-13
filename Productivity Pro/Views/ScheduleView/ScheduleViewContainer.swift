@@ -29,6 +29,7 @@ struct ScheduleViewContainer: View {
             schedule: $schedule
         )
         .navigationTitle("Stundenplan")
+        .scrollDisabled(empty())
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(
@@ -42,11 +43,16 @@ struct ScheduleViewContainer: View {
             }
         }
         .overlay {
-            if empty() { EmptyView() }
+            if subjects.value.isEmpty {
+                EmptySubjectsView()
+            } else if empty() {
+                EmptyScheduleView()
+                    .transition(.blurReplace)
+            }
         }
     }
     
-    @ViewBuilder func EmptyView() -> some View {
+    @ViewBuilder func EmptyScheduleView() -> some View {
         ContentUnavailableView(label: {
             Label(
                 "Du hast noch keinen Stundenplan erstellt.",
@@ -62,7 +68,19 @@ struct ScheduleViewContainer: View {
             }
             .foregroundStyle(Color.primary)
         })
-        .transition(.opacity)
+        .transition(.blurReplace())
+    }
+    
+    @ViewBuilder func EmptySubjectsView() -> some View {
+        ContentUnavailableView(
+            "Du hast noch keine Fächer erstellt.",
+            systemImage: "tray.2.fill",
+            description: Text("Gehe unter Einstellungen auf \"Fächer\".")
+        )
+        .foregroundStyle(
+            Color.primary, Color.accentColor, Color.secondary
+        )
+        .transition(.identity)
     }
     
     func empty() -> Bool {

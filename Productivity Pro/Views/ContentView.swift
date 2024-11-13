@@ -32,8 +32,6 @@ struct ContentView: View {
                 Text("Search View")
             case .trash:
                 TrashView(contentObjects: contentObjects)
-            case .library:
-                Text("Library View")
             case .tasks:
                 HomeworkView()
             case .schedule:

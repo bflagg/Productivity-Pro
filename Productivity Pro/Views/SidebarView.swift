@@ -32,11 +32,13 @@ struct SidebarView: View {
                     }
                     
                     NavigationLink(value: ViewPresentation.trash) {
-                        Label("Papierkorb", systemImage: "trash")
-                    }
-                    
-                    NavigationLink(value: ViewPresentation.library) {
-                        Label("Bibliothek", systemImage: "building.columns.fill")
+                        Label {
+                            Text("Papierkorb")
+                                .foregroundStyle(.red)
+                        } icon: {
+                            Image(systemName: "trash")
+                                .foregroundStyle(.red)
+                        }
                     }
                 }
                 

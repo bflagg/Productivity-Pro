@@ -54,8 +54,8 @@ struct ScheduleColumn: View {
             }
             .padding(.bottom, 15)
         }
-        .animation(.default, value: isEditing)
-        .animation(.default, value: day.subjects.count)
+        .animation(.bouncy, value: isEditing)
+        .animation(.bouncy, value: day.subjects.count)
         .frame(maxWidth: .infinity)
         .sheet(isPresented: $addSubject) {
             ScheduleAddSubject(
@@ -140,7 +140,7 @@ struct ScheduleColumn: View {
                 }
             }
             .transition(.blurReplace)
-            .animation(.default, value: scheduleSubject.isMarked)
+            .animation(.bouncy, value: scheduleSubject.isMarked)
         }
         .onTapGesture(count: 2) {
             if isEditing == false {
