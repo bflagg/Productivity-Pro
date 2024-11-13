@@ -18,7 +18,7 @@ struct SidebarView: View {
             @Bindable var navigation = navigationManager
             
             List(selection: $navigation.selection) {
-                NavigationLink(value: "G") {
+                NavigationLink(value: ViewPresentation.gemini) {
                     Label("Gemini", systemImage: "sparkles")
                 }
                 
