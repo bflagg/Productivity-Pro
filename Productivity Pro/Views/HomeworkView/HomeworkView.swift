@@ -48,6 +48,7 @@ struct HomeworkView: View {
                 DoneView()
             }
         }
+        .animation(.bouncy, value: homeworkTasks.isEmpty)
     }
     
     @ViewBuilder func DoneView() -> some View {
