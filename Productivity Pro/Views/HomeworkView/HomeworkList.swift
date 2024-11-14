@@ -9,29 +9,25 @@ import SwiftData
 import SwiftUI
 
 struct HomeworkList: View {
-    @Environment(\.modelContext) var context
-    
-    @Query(
-        FetchDescriptor(
-            sortBy: [SortDescriptor(\Homework.title, order: .forward)]
-        )
-    ) var homeworkTasks: [Homework]
-    
     @Query var contentObjects: [ContentObject]
+    @Environment(\.modelContext) var context
     
     @AppStorage("ppsubjects")
     var subjects: CodableWrapper<[Subject]> = .init(value: .init())
     
+    var homeworkTasks: [Homework]
     @Binding var presentAdd: Bool
-    @State var presentEdit: Bool = false
     
     @State var selectedHomework: Homework = .init()
+    @State var presentEdit: Bool = false
     
     var body: some View {
         List {
-            ForEach(dates(), id: \.self) { date in
-                Section(content: {
-                    ForEach(filterTasks(by: date)) { homework in
+            ForEach(dates, id: \.self) { date in
+                let filtered = filterTasks(by: date)
+                
+                Section {
+                    ForEach(filtered) { homework in
                         HomeworkItem(
                             contentObjects: contentObjects,
                             homework: homework,
@@ -39,13 +35,14 @@ struct HomeworkList: View {
                             delete: { delete(homework) }
                         )
                     }
-                }, header: {
+                } header: {
                     let string = formattedString(of: date)
                     Text(string)
                         .foregroundStyle(textColor(from: string))
-                })
+                }
             }
         }
+        .animation(.bouncy, value: homeworkTasks.count)
         .scrollContentBackground(.hidden)
         .sheet(isPresented: $presentAdd, content: {
             HAdditView(
@@ -61,29 +58,5 @@ struct HomeworkList: View {
             )
             .interactiveDismissDisabled()
         })
-        .overlay { DoneView() }
-    }
-    
-    @ViewBuilder func DoneView() -> some View {
-        if homeworkTasks.isEmpty {
-            ContentUnavailableView(label: {
-                Label(
-                    "Du hast alles erledigt.",
-                    systemImage: "checkmark.circle"
-                )
-                .foregroundStyle(Color.primary, Color.green)
-            }, description: {
-                Group {
-                    Text("Tippe auf ") +
-                        Text(Image(systemName: "plus"))
-                        .foregroundStyle(Color.accentColor) +
-                        Text(", um eine neue Aufgabe hinzuzufügen.")
-                }
-                .foregroundStyle(Color.primary)
-            })
-            .transition(
-                .asymmetric(insertion: .opacity, removal: .identity)
-            )
-        }
     }
 }

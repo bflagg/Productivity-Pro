@@ -116,8 +116,12 @@ struct HAdditView: View {
             .toolbar {
                 if view == .add {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("Hinzufügen") { add() }
-                            .disabled(title == "")
+                        Button("Hinzufügen") {
+                            withAnimation {
+                                add()
+                            }
+                        }
+                        .disabled(title == "")
                     }
                     
                     ToolbarItem(placement: .cancellationAction) {

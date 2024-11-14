@@ -22,7 +22,7 @@ extension HomeworkList {
         presentEdit.toggle()
     }
     
-    func dates() -> [Date] {
+    var dates: [Date] {
         let dates = homeworkTasks.map { $0.date }
         return Array(Set(dates)).sorted(by: { $0 < $1 })
     }
