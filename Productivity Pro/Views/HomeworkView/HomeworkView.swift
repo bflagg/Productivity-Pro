@@ -9,50 +9,47 @@ import SwiftUI
 import SwiftData
 
 struct HomeworkView: View {
-    @Query(
-        FetchDescriptor(
-            sortBy: [SortDescriptor(\Homework.title, order: .forward)]
-        )
-    ) var homeworkTasks: [Homework]
-    
     @AppStorage("ppsubjects")
     var subjects: CodableWrapper<[Subject]> = .init(value: .init())
     
     @State var presentAdd: Bool = false
+    var tasks: [Homework]
     
     var body: some View {
-        ZStack {
-            Color(UIColor.systemGroupedBackground)
-                .ignoresSafeArea(.all)
-            
-            if !subjects.value.isEmpty {
-                HomeworkList(
-                    homeworkTasks: homeworkTasks, presentAdd: $presentAdd
-                )
-                .scrollDisabled(homeworkTasks.isEmpty)
-            }
-        }
-        .navigationTitle("Aufgaben")
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Aufgabe hinzufügen", systemImage: "plus") {
-                    presentAdd.toggle()
+        NavigationStack {
+            ZStack {
+                Color(UIColor.systemGroupedBackground)
+                    .ignoresSafeArea(.all)
+                
+                if !subjects.value.isEmpty {
+                    HomeworkList(
+                        homeworkTasks: tasks, presentAdd: $presentAdd
+                    )
+                    .scrollDisabled(tasks.isEmpty)
                 }
-                .disabled(subjects.value.isEmpty)
             }
-        }
-        .overlay {
-            if subjects.value.isEmpty {
-                EmptyView()
-            } else if homeworkTasks.isEmpty {
-                DoneView()
+            .navigationTitle("Aufgaben")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Aufgabe hinzufügen", systemImage: "plus") {
+                        presentAdd.toggle()
+                    }
+                    .disabled(subjects.value.isEmpty)
+                }
             }
+            .overlay {
+                if subjects.value.isEmpty {
+                    EmptyView()
+                } else if tasks.isEmpty {
+                    DoneView()
+                }
+            }
+            .animation(.bouncy, value: tasks.isEmpty)
         }
-        .animation(.bouncy, value: homeworkTasks.isEmpty)
     }
     
     @ViewBuilder func DoneView() -> some View {
-        if homeworkTasks.isEmpty {
+        if tasks.isEmpty {
             ContentUnavailableView(label: {
                 Label(
                     "Du hast alles erledigt.",
@@ -83,8 +80,4 @@ struct HomeworkView: View {
         )
         .transition(.identity)
     }
-}
-
-#Preview {
-    HomeworkView()
 }

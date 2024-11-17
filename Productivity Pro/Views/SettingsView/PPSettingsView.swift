@@ -18,66 +18,68 @@ struct PPSettingsView: View {
     )!
     
     var body: some View {
-        Form {
-            Settings()
-            DataAndNotifications()
-            
-            Section("Bewertungen und Kontakt") {
-                Button(action: {
-                    if let url = URL(string: string) {
-                        UIApplication.shared.open(url)
-                    }
-                }) {
-                    Label(
-                        title: {
-                            Text("Bewerte Productivity Pro im App Store")
-                                .foregroundStyle(Color.primary)
-                        },
-                        icon: {
-                            Image(systemName: "star.fill")
-                                .foregroundStyle(Color.yellow)
-                        }
-                    )
-                }
-                .frame(height: 30)
-            }
-            
-            Section {
-                Button(action: {
-                    UIApplication.shared.open(mail)
-                }) {
-                    Label(
-                        title: {
-                            Text("Email Support")
-                                .foregroundStyle(Color.primary)
-                        },
-                        icon: {
-                            Image(systemName: "envelope.fill")
-                                .foregroundStyle(Color.blue)
-                        }
-                    )
-                }
-                .frame(height: 30)
+        NavigationStack {
+            Form {
+                Settings()
+                DataAndNotifications()
                 
-                Button(action: {
-                    UIApplication.shared.open(message)
-                }) {
-                    Label(
-                        title: {
-                            Text("Messages Support")
-                                .foregroundStyle(Color.primary)
-                        },
-                        icon: {
-                            Image(systemName: "message.fill")
-                                .foregroundStyle(Color.green)
+                Section("Bewertungen und Kontakt") {
+                    Button(action: {
+                        if let url = URL(string: string) {
+                            UIApplication.shared.open(url)
                         }
-                    )
+                    }) {
+                        Label(
+                            title: {
+                                Text("Bewerte Productivity Pro im App Store")
+                                    .foregroundStyle(Color.primary)
+                            },
+                            icon: {
+                                Image(systemName: "star.fill")
+                                    .foregroundStyle(Color.yellow)
+                            }
+                        )
+                    }
+                    .frame(height: 30)
                 }
-                .frame(height: 30)
+                
+                Section {
+                    Button(action: {
+                        UIApplication.shared.open(mail)
+                    }) {
+                        Label(
+                            title: {
+                                Text("Email Support")
+                                    .foregroundStyle(Color.primary)
+                            },
+                            icon: {
+                                Image(systemName: "envelope.fill")
+                                    .foregroundStyle(Color.blue)
+                            }
+                        )
+                    }
+                    .frame(height: 30)
+                    
+                    Button(action: {
+                        UIApplication.shared.open(message)
+                    }) {
+                        Label(
+                            title: {
+                                Text("Messages Support")
+                                    .foregroundStyle(Color.primary)
+                            },
+                            icon: {
+                                Image(systemName: "message.fill")
+                                    .foregroundStyle(Color.green)
+                            }
+                        )
+                    }
+                    .frame(height: 30)
+                }
+                .listSectionSpacing(18)
             }
-            .listSectionSpacing(18)
+            .environment(\.defaultMinListRowHeight, 10)
+            .navigationTitle("Einstellungen")
         }
-        .environment(\.defaultMinListRowHeight, 10)
-        .navigationTitle("Einstellungen")
     }
 }

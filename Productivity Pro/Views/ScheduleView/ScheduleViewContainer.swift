@@ -24,30 +24,32 @@ struct ScheduleViewContainer: View {
     ])
     
     var body: some View {
-        ScheduleView(
-            isEditing: $isEditing, hsc: hsc,
-            schedule: $schedule
-        )
-        .navigationTitle("Stundenplan")
-        .scrollDisabled(empty())
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(
-                    "Edit", systemImage: !isEditing ? "pencil" : "pencil.slash"
-                ) {
-                    withAnimation {
-                        isEditing.toggle()
+        NavigationStack {
+            ScheduleView(
+                isEditing: $isEditing, hsc: hsc,
+                schedule: $schedule
+            )
+            .navigationTitle("Stundenplan")
+            .scrollDisabled(empty())
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(
+                        "Edit", systemImage: !isEditing ? "pencil" : "pencil.slash"
+                    ) {
+                        withAnimation {
+                            isEditing.toggle()
+                        }
                     }
+                    .disabled(subjects.value.isEmpty)
                 }
-                .disabled(subjects.value.isEmpty)
             }
-        }
-        .overlay {
-            if subjects.value.isEmpty {
-                EmptySubjectsView()
-            } else if empty() {
-                EmptyScheduleView()
-                    .transition(.blurReplace)
+            .overlay {
+                if subjects.value.isEmpty {
+                    EmptySubjectsView()
+                } else if empty() {
+                    EmptyScheduleView()
+                        .transition(.blurReplace)
+                }
             }
         }
     }

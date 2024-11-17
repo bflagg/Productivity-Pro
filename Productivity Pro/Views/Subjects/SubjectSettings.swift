@@ -11,11 +11,9 @@ import SwiftUI
 struct SubjectSettings: View {
     @Environment(\.modelContext) var context
     
-    @Query(
-        FetchDescriptor(
-            sortBy: [SortDescriptor(\Homework.title, order: .forward)]
-        )
-    ) var homeworkTasks: [Homework]
+    @Query(FetchDescriptor(sortBy: [
+        SortDescriptor(\Homework.title, order: .forward)
+    ])) var homeworkTasks: [Homework]
     
     @AppStorage("ppsubjects")
     var subjects: CodableWrapper<[Subject]> = .init(value: .init())
@@ -33,41 +31,43 @@ struct SubjectSettings: View {
     @State var purchaseView: Bool = false
     
     var body: some View {
-        ZStack {
-            Color(UIColor.systemGroupedBackground)
-                .ignoresSafeArea(.all)
-            
-            List {
-                if subjects.value.isEmpty == false {
-                    Section("Meine Fächer") {
-                        ForEach(
-                            subjects.value.sorted(by: { $0.title < $1.title })
-                        ) { subject in
-                            SubjectSettingsRow(
-                                subject: subject,
-                                homeworkTasks: homeworkTasks
-                            )
+        NavigationStack {
+            ZStack {
+                Color(UIColor.systemGroupedBackground)
+                    .ignoresSafeArea(.all)
+                
+                List {
+                    if subjects.value.isEmpty == false {
+                        Section("Meine Fächer") {
+                            ForEach(
+                                subjects.value.sorted(by: { $0.title < $1.title })
+                            ) { subject in
+                                SubjectSettingsRow(
+                                    subject: subject,
+                                    homeworkTasks: homeworkTasks
+                                )
+                            }
+                        }
+                    }
+                }
+                .animation(.bouncy, value: subjects.value.count)
+                .scrollDisabled(subjects.value.isEmpty)
+                .scrollContentBackground(.hidden)
+                .navigationTitle("Fächer")
+                .sheet(isPresented: $addSubject) {
+                    AddSubject(addSubject: $addSubject)
+                }
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Fach hinzufügen", systemImage: "plus") {
+                            addSubject.toggle()
                         }
                     }
                 }
             }
-            .animation(.bouncy, value: subjects.value.count)
-            .scrollDisabled(subjects.value.isEmpty)
-            .scrollContentBackground(.hidden)
-            .navigationTitle("Fächer")
-            .sheet(isPresented: $addSubject) {
-                AddSubject(addSubject: $addSubject)
+            .overlay {
+                if subjects.value.isEmpty { EmptyView() }
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Fach hinzufügen", systemImage: "plus") {
-                        addSubject.toggle()
-                    }
-                }
-            }
-        }
-        .overlay {
-            if subjects.value.isEmpty { EmptyView() }
         }
     }
     

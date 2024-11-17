@@ -10,7 +10,7 @@ import SwiftUI
 struct FileSystemView: View {
     @AppStorage("ppgrade") var grade: Int = 5
     var contentObjects: [ContentObject]
-
+    
     var body: some View {
         NavigationStack {
             ObjectView(
@@ -30,12 +30,12 @@ struct FileSystemView: View {
                     }, description: {
                         Group {
                             Text("Wähle zuerst deine Klasse ") +
-                                Text(Image(systemName: "list.bullet"))
+                            Text(Image(systemName: "list.bullet"))
                                 .foregroundStyle(Color.accentColor) +
-                                Text(" und tippe dann auf ") +
-                                Text(Image(systemName: "plus"))
+                            Text(" und tippe dann auf ") +
+                            Text(Image(systemName: "plus"))
                                 .foregroundStyle(Color.accentColor) +
-                                Text(", um eine neue Notiz zu erstellen.")
+                            Text(", um eine neue Notiz zu erstellen.")
                         }
                         .foregroundStyle(Color.primary)
                     })
