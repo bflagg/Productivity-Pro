@@ -264,6 +264,7 @@
 		BBE4B6942BD51CDD006DFDD5 /* ObjectViewVocabularyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4B6932BD51CDD006DFDD5 /* ObjectViewVocabularyLink.swift */; };
 		BBE9196A28F333AC001EF750 /* OverviewDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE9196928F333AC001EF750 /* OverviewDropDelegate.swift */; };
 		BBE9196E28F381FE001EF750 /* PPScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE9196D28F381FE001EF750 /* PPScrollView.swift */; };
+		BBEE0F172CEA0C8700C34E7A /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEE0F162CEA0C8700C34E7A /* SidebarView.swift */; };
 		BBEF06D62ABF6654007EDFF6 /* SubjectSettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF06D52ABF6654007EDFF6 /* SubjectSettingsRow.swift */; };
 		BBEF06D82ABF7106007EDFF6 /* HomeworkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF06D72ABF7106007EDFF6 /* HomeworkItem.swift */; };
 		BBEFC94F2A41035C00960C8D /* ToolbarMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEFC94E2A41035C00960C8D /* ToolbarMethods.swift */; };
@@ -580,6 +581,7 @@
 		BBE4B6932BD51CDD006DFDD5 /* ObjectViewVocabularyLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewVocabularyLink.swift; sourceTree = "<group>"; };
 		BBE9196928F333AC001EF750 /* OverviewDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewDropDelegate.swift; sourceTree = "<group>"; };
 		BBE9196D28F381FE001EF750 /* PPScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPScrollView.swift; sourceTree = "<group>"; };
+		BBEE0F162CEA0C8700C34E7A /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		BBEF06D52ABF6654007EDFF6 /* SubjectSettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectSettingsRow.swift; sourceTree = "<group>"; };
 		BBEF06D72ABF7106007EDFF6 /* HomeworkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkItem.swift; sourceTree = "<group>"; };
 		BBEFC94E2A41035C00960C8D /* ToolbarMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarMethods.swift; sourceTree = "<group>"; };
@@ -920,6 +922,7 @@
 			isa = PBXGroup;
 			children = (
 				BB6701572AADEFA7001F468A /* ContentView.swift */,
+				BBEE0F162CEA0C8700C34E7A /* SidebarView.swift */,
 				BB4A93DE2AAF556900C3AED6 /* ScheduleView */,
 				BB4A93DF2AAF557B00C3AED6 /* HomeworkView */,
 				BB6BFA2129048BBE002D09FD /* SettingsView */,
@@ -1726,6 +1729,7 @@
 				BB24E83329EB1FD40082AE98 /* DrawingView.swift in Sources */,
 				BB47056B2B93393E009A5FCD /* PPPageUndo.swift in Sources */,
 				BBFA92482B607E840055CE9D /* ShareMenu.swift in Sources */,
+				BBEE0F172CEA0C8700C34E7A /* SidebarView.swift in Sources */,
 				BB94F3582BD5BF12009B95CD /* VocabularyViewContainer.swift in Sources */,
 				BB6F3DD6291B10F5005BDDEB /* ToolManager.swift in Sources */,
 				BBE4B6922BD5177F006DFDD5 /* LIAPMethods.swift in Sources */,
