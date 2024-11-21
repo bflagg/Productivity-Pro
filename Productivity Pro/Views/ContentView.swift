@@ -23,31 +23,69 @@ struct ContentView: View {
     @State var navigationManager: NavigationManager = .init()
     
     var body: some View {
-        NavigationSplitView(sidebar: {
-            SidebarView(contentObjects: contentObjects, tasks: tasks)
-        }) {
-            switch navigationManager.selection {
-            case .gemini:
+        TabView(selection: $navigationManager.selection) {
+            Tab(value: ViewPresentation.gemini, content: {
                 Text("Gemini View")
-            case .finder:
-                FileSystemView(contentObjects: contentObjects)
-            case .search:
-                Text("Search View")
-            case .trash:
-                TrashView(contentObjects: contentObjects)
-            case .tasks:
-                HomeworkView(tasks: tasks)
-            case .schedule:
-                ScheduleViewContainer()
-            case .exams:
-                Text("Tests View")
-            case .subjects:
-                SubjectSettings()
-            case .general:
-                PPSettingsView()
-            case .none:
-                Text("Productivity Pro")
+            }) {
+                Label("Gemini", systemImage: "sparkles")
             }
+            
+            TabSection("Notizen") {
+                Tab(value: ViewPresentation.finder, content: {
+                    FileSystemView(contentObjects: contentObjects)
+                }) {
+                    Label("Finder", systemImage: "doc.fill")
+                }
+                
+                Tab(value: ViewPresentation.search, content: {
+                    Text("Search View")
+                }) {
+                    Label("Suchen", systemImage: "magnifyingglass")
+                }
+                .defaultVisibility(.hidden, for: .tabBar)
+                
+                Tab(value: ViewPresentation.trash, content: {
+                    TrashView(contentObjects: contentObjects)
+                }) {
+                   Label("Papierkorb", systemImage: "trash")
+                }
+                .defaultVisibility(.hidden, for: .tabBar)
+            }
+             
+            TabSection("Organisation") {
+                Tab(value: ViewPresentation.tasks, content: {
+                    HomeworkView(tasks: tasks)
+                }) {
+                    Label("Aufgaben", systemImage: "checklist")
+                }
+                .badge(Text("\(tasks.count) "))
+                
+                Tab(value: ViewPresentation.schedule, content: {
+                    ScheduleViewContainer()
+                }) {
+                    Label("Stundenplan", systemImage: "calendar")
+                }
+                .defaultVisibility(.hidden, for: .tabBar)
+            }
+            
+            TabSection("Einstellungen") {
+                Tab(value: ViewPresentation.subjects, content: {
+                    SubjectSettings()
+                }) {
+                    Label("Fächer", systemImage: "tray.2.fill")
+                }
+                .defaultVisibility(.hidden, for: .tabBar)
+                
+                Tab(value: ViewPresentation.general, content: {
+                    PPSettingsView()
+                }) {
+                    Label("Allgemein", systemImage: "gearshape.fill")
+                }
+            }
+        }
+        .tabViewStyle(.sidebarAdaptable)
+        .tabViewSidebarBottomBar {
+            Footer()
         }
         .disabled(toolManager.showProgress)
         .modifier(
@@ -82,12 +120,23 @@ struct ContentView: View {
         }
     }
     
+    @ViewBuilder func Footer() -> some View {
+        Group {
+            Text("Entwickelt mit ") +
+            Text("\(Image(systemName: "heart.fill"))")
+                .foregroundStyle(Color.red) +
+            Text(" für Schüler")
+        }
+        .font(.caption)
+        .foregroundStyle(Color.secondary)
+    }
+    
     @MainActor func review() {
-        #if DEBUG
-        #else
+#if DEBUG
+#else
         if contentObjects.count > 3 {
             requestReview()
         }
-        #endif
+#endif
     }
 }

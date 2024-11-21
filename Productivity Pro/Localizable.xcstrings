@@ -103,6 +103,9 @@
         }
       }
     },
+    "%lld " : {
+
+    },
     "%lld von %lld" : {
       "localizations" : {
         "en" : {
@@ -2040,9 +2043,6 @@
           }
         }
       }
-    },
-    "Tests View" : {
-
     },
     "Text" : {
       "localizations" : {
