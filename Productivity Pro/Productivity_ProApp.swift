@@ -13,6 +13,7 @@ struct Productivity_ProApp: App {
     var body: some Scene {
         WindowGroup(id: "main") {
             ContentView()
+                .ignoresSafeArea(.all, edges: .bottom)
         }
         .modelContainer(
             for: [

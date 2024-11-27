@@ -8,17 +8,16 @@
 import Foundation
 
 @Observable class NavigationManager {
-    var selection: ViewPresentation? = .finder
+    var selection: ViewPresentation = .finder
 }
 
-enum ViewPresentation {
+enum ViewPresentation: CaseIterable {
     case gemini
     case finder
     case search
     case trash
     case tasks
     case schedule
-    case exams
     case subjects
     case general
 }
