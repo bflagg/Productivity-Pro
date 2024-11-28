@@ -23,26 +23,48 @@ struct ContentView: View {
     @State var navigationManager: NavigationManager = .init()
     
     var body: some View {
-        Group {
-            switch navigationManager.selection {
-            case .gemini:
-                GemniContainer
-            case .finder:
-                FinderContainer
-            case .search:
-                SearchContainer
-            case .trash:
-                TrashContainer
-            case .tasks:
-                HomeworkContainer
-            case .schedule:
-                ScheduleContainer
-            case .subjects:
-                SubjectContainer
-            case .general:
-                SettingsContainer
-            }
+        ZStack {
+            // Gemini View
+            Text("Gemini View")
+                .opacity(navigationManager.selection == .gemini ? 1 : 0)
+                .allowsHitTesting(navigationManager.selection == .gemini)
+            
+            // Finder View
+            FileSystemView(contentObjects: contentObjects)
+                .opacity(navigationManager.selection == .finder ? 1 : 0)
+                .allowsHitTesting(navigationManager.selection == .finder)
+            
+            // Search View
+            Text("Search View")
+                .opacity(navigationManager.selection == .search ? 1 : 0)
+                .allowsHitTesting(navigationManager.selection == .search)
+            
+            // Trash View
+            TrashView(contentObjects: contentObjects)
+                .opacity(navigationManager.selection == .trash ? 1 : 0)
+                .allowsHitTesting(navigationManager.selection == .trash)
+            
+            // Homework View
+            HomeworkView(tasks: tasks)
+                .opacity(navigationManager.selection == .tasks ? 1 : 0)
+                .allowsHitTesting(navigationManager.selection == .tasks)
+            
+            // Schedule View
+            ScheduleViewContainer()
+                .opacity(navigationManager.selection == .schedule ? 1 : 0)
+                .allowsHitTesting(navigationManager.selection == .schedule)
+            
+            // Subject View
+            SubjectSettings()
+                .opacity(navigationManager.selection == .subjects ? 1 : 0)
+                .allowsHitTesting(navigationManager.selection == .subjects)
+            
+            // Settings View
+            PPSettingsView()
+                .opacity(navigationManager.selection == .general ? 1 : 0)
+                .allowsHitTesting(navigationManager.selection == .general)
         }
+        .animation(.bouncy, value: navigationManager.selection)
         .disabled(toolManager.showProgress)
         .modifier(
             OpenURL(
@@ -77,38 +99,6 @@ struct ContentView: View {
         .environment(toolManager)
         .environment(subviewManager)
         .environment(navigationManager)
-    }
-    
-    var GemniContainer: some View {
-        Text("Gemini View")
-    }
-    
-    var FinderContainer: some View {
-        FileSystemView(contentObjects: contentObjects)
-    }
-    
-    var SearchContainer: some View {
-        Text("Search View")
-    }
-    
-    var TrashContainer: some View {
-        TrashView(contentObjects: contentObjects)
-    }
-    
-    var HomeworkContainer: some View {
-        HomeworkView(tasks: tasks)
-    }
-    
-    var ScheduleContainer: some View {
-        ScheduleViewContainer()
-    }
-    
-    var SubjectContainer: some View {
-        SubjectSettings()
-    }
-    
-    var SettingsContainer: some View {
-        PPSettingsView()
     }
     
     @MainActor func review() {

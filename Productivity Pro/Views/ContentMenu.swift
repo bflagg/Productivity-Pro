@@ -16,8 +16,11 @@ struct ContentMenu: View {
             let views = ViewPresentation.allCases.count - 1
             
             ForEach(0...views, id: \.self) { index in
-                Group {
+                ZStack {
                     let view = ViewPresentation.allCases[index]
+                    Circle()
+                        .foregroundStyle(Color.accentColor)
+                        .frame(width: 50, height: 50)
                     
                     Button(action: {
                         navigation.selection = view
@@ -34,8 +37,10 @@ struct ContentMenu: View {
                         )
                         .padding()
                         .frame(width: 50, height: 50)
-                        .background(.ultraThickMaterial)
+                        .background(.background)
                         .clipShape(Circle())
+                        .compositingGroup()
+                        .shadow(color: Color.primary.opacity(0.5), radius: 0.5)
                     }
                     .offset(
                         y: showMenu ? CGFloat(8 - index) * -65 : 0
@@ -48,18 +53,14 @@ struct ContentMenu: View {
             Button(action: {
                 showMenu.toggle()
             }) {
-                Label(
-                    title(view: navigation.selection),
-                    systemImage: image(view: navigation.selection)
-                )
-                .contentTransition(.symbolEffect)
-                .labelStyle(.iconOnly)
-                .foregroundStyle(Color.white)
-                .font(.title3)
-                .padding()
-                .frame(width: 50, height: 50)
-                .background(.accent)
-                .clipShape(Circle())
+                Label("Tab", systemImage: "ellipsis")
+                    .labelStyle(.iconOnly)
+                    .foregroundStyle(Color.white)
+                    .font(.title3)
+                    .padding()
+                    .frame(width: 50, height: 50)
+                    .background(.accent)
+                    .clipShape(Circle())
             }
             .zIndex(1)
         }
