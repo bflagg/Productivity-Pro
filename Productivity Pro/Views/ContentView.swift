@@ -23,48 +23,37 @@ struct ContentView: View {
     @State var navigationManager: NavigationManager = .init()
     
     var body: some View {
-        ZStack {
-            // Gemini View
-            Text("Gemini View")
-                .opacity(navigationManager.selection == .gemini ? 1 : 0)
-                .allowsHitTesting(navigationManager.selection == .gemini)
+        TabView(selection: $navigationManager.selection) {
+            Tab.init(value: ViewPresentation.gemini) {
+                Text("Gemini View")
+                    .toolbarVisibility(.hidden, for: .tabBar)
+            }
             
-            // Finder View
-            FileSystemView(contentObjects: contentObjects)
-                .opacity(navigationManager.selection == .finder ? 1 : 0)
-                .allowsHitTesting(navigationManager.selection == .finder)
+            Tab.init(value: ViewPresentation.finder) {
+                FileSystemView(contentObjects: contentObjects)
+                    .toolbarVisibility(.hidden, for: .tabBar)
+            }
             
-            // Search View
-            Text("Search View")
-                .opacity(navigationManager.selection == .search ? 1 : 0)
-                .allowsHitTesting(navigationManager.selection == .search)
+            Tab.init(value: ViewPresentation.tasks) {
+                HomeworkView(tasks: tasks)
+                    .toolbarVisibility(.hidden, for: .tabBar)
+            }
             
-            // Trash View
-            TrashView(contentObjects: contentObjects)
-                .opacity(navigationManager.selection == .trash ? 1 : 0)
-                .allowsHitTesting(navigationManager.selection == .trash)
+            Tab.init(value: ViewPresentation.schedule) {
+                ScheduleViewContainer()
+                    .toolbarVisibility(.hidden, for: .tabBar)
+            }
             
-            // Homework View
-            HomeworkView(tasks: tasks)
-                .opacity(navigationManager.selection == .tasks ? 1 : 0)
-                .allowsHitTesting(navigationManager.selection == .tasks)
+            Tab.init(value: ViewPresentation.subjects) {
+                SubjectSettings()
+                    .toolbarVisibility(.hidden, for: .tabBar)
+            }
             
-            // Schedule View
-            ScheduleViewContainer()
-                .opacity(navigationManager.selection == .schedule ? 1 : 0)
-                .allowsHitTesting(navigationManager.selection == .schedule)
-            
-            // Subject View
-            SubjectSettings()
-                .opacity(navigationManager.selection == .subjects ? 1 : 0)
-                .allowsHitTesting(navigationManager.selection == .subjects)
-            
-            // Settings View
-            PPSettingsView()
-                .opacity(navigationManager.selection == .general ? 1 : 0)
-                .allowsHitTesting(navigationManager.selection == .general)
+            Tab.init(value: ViewPresentation.general) {
+                PPSettingsView()
+                    .toolbarVisibility(.hidden, for: .tabBar)
+            }
         }
-        .animation(.bouncy, value: navigationManager.selection)
         .disabled(toolManager.showProgress)
         .modifier(
             OpenURL(

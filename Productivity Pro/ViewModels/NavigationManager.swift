@@ -14,8 +14,6 @@ import Foundation
 enum ViewPresentation: CaseIterable {
     case gemini
     case finder
-    case search
-    case trash
     case tasks
     case schedule
     case subjects

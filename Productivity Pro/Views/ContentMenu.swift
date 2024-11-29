@@ -8,70 +8,55 @@
 import SwiftUI
 
 struct ContentMenu: View {
+    @Namespace private var animation
+    
     @Environment(NavigationManager.self) var navigation
     @State var showMenu = false
     
     var body: some View {
-        ZStack(alignment: .leading) {
-            let views = ViewPresentation.allCases.count - 1
-            
-            ForEach(0...views, id: \.self) { index in
-                ZStack {
-                    let view = ViewPresentation.allCases[index]
-                    Circle()
-                        .foregroundStyle(Color.accentColor)
-                        .frame(width: 50, height: 50)
-                    
-                    Button(action: {
+        HStack(spacing: 10) {
+            ForEach(ViewPresentation.allCases, id: \.self) { view in
+                Button(action: {
+                    withAnimation(.spring) {
                         navigation.selection = view
-                        showMenu.toggle()
-                    }) {
-                        Label(
-                            title(view: view),
-                            systemImage: image(view: view)
-                        )
-                        .labelStyle(.iconOnly)
-                        .font(.title3)
-                        .foregroundStyle(
-                            navigation.selection == view ? Color.accentColor : Color.primary
-                        )
-                        .padding()
-                        .frame(width: 50, height: 50)
-                        .background(.background)
-                        .clipShape(Circle())
-                        .compositingGroup()
-                        .shadow(color: Color.primary.opacity(0.5), radius: 0.5)
                     }
-                    .offset(
-                        y: showMenu ? CGFloat(8 - index) * -65 : 0
-                    )
+                }) {
+                    Image(systemName: image(view: view))
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .foregroundColor(
+                            view == navigation.selection ? Color.accentColor : Color.primary
+                        )
+                        .padding(11)
+                        .background {
+                            if view == navigation.selection {
+                                Circle()
+                                    .foregroundStyle(.background)
+                                    .matchedGeometryEffect(
+                                        id: "view", in: animation
+                                    )
+                            }
+                        }
                 }
-                .opacity(showMenu ? 1 : 0)
-                .zIndex(0)
             }
-            
-            Button(action: {
-                showMenu.toggle()
-            }) {
-                Label("Tab", systemImage: "ellipsis")
-                    .labelStyle(.iconOnly)
-                    .foregroundStyle(Color.white)
-                    .font(.title3)
-                    .padding()
-                    .frame(width: 50, height: 50)
-                    .background(.accent)
-                    .clipShape(Circle())
-            }
-            .zIndex(1)
         }
-        .padding(25)
-        .animation(.bouncy, value: navigation.selection)
-        .animation(.bouncy, value: showMenu)
+        .padding(3)
+        .padding(.horizontal, 2)
+        .background {
+            ZStack {
+                Rectangle()
+                    .foregroundStyle(.ultraThinMaterial)
+                
+                Rectangle()
+                    .foregroundStyle(.quinary)
+            }
+        }
+        .clipShape(Capsule())
         .frame(
-            maxWidth: .infinity,
-            maxHeight: .infinity,
-            alignment: .bottomLeading
+            maxWidth: .infinity, maxHeight: .infinity,
+            alignment: .bottom
         )
+        .padding(.bottom, 30)
         .ignoresSafeArea(.all)
     }
     
@@ -81,10 +66,6 @@ struct ContentMenu: View {
             return "sparkles"
         case .finder:
             return "doc"
-        case .search:
-            return "magnifyingglass"
-        case .trash:
-            return "trash"
         case .tasks:
             return "checklist"
         case .schedule:
@@ -102,10 +83,6 @@ struct ContentMenu: View {
             return "Gemini"
         case .finder:
             return "Notizen"
-        case .search:
-            return "Suchen"
-        case .trash:
-            return "Papierkorb"
         case .tasks:
             return "Aufgaben"
         case .schedule:
