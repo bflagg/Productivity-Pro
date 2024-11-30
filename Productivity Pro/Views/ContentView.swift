@@ -24,11 +24,6 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $navigationManager.selection) {
-            Tab.init(value: ViewPresentation.gemini) {
-                Text("Gemini View")
-                    .toolbarVisibility(.hidden, for: .tabBar)
-            }
-            
             Tab.init(value: ViewPresentation.finder) {
                 FileSystemView(contentObjects: contentObjects)
                     .toolbarVisibility(.hidden, for: .tabBar)
@@ -44,12 +39,7 @@ struct ContentView: View {
                     .toolbarVisibility(.hidden, for: .tabBar)
             }
             
-            Tab.init(value: ViewPresentation.subjects) {
-                SubjectSettings()
-                    .toolbarVisibility(.hidden, for: .tabBar)
-            }
-            
-            Tab.init(value: ViewPresentation.general) {
+            Tab.init(value: ViewPresentation.settings) {
                 PPSettingsView()
                     .toolbarVisibility(.hidden, for: .tabBar)
             }

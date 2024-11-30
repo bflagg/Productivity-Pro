@@ -216,6 +216,7 @@
 		BBB538832B40BA7F00C874EA /* ExportableBackupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB538822B40BA7F00C874EA /* ExportableBackupModel.swift */; };
 		BBB538852B40BADC00C874EA /* ExportableContentObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB538842B40BADC00C874EA /* ExportableContentObjectModel.swift */; };
 		BBB538952B40BE4700C874EA /* ExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB538942B40BE4700C874EA /* ExportManager.swift */; };
+		BBB569172CFB0C1400B23479 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = BBB569162CFB0C1400B23479 /* MessageKit */; };
 		BBBB7E082A2693FD00155C8A /* CalculatorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBB7E062A2693FD00155C8A /* CalculatorButtonView.swift */; };
 		BBBB7E092A2693FD00155C8A /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBB7E072A2693FD00155C8A /* CalculatorView.swift */; };
 		BBBCACB52A25461900C23B2C /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBCACB22A25461900C23B2C /* CalculatorModel.swift */; };
@@ -620,6 +621,7 @@
 				BB49840A2BC32BCD008D45B0 /* Accelerate.framework in Frameworks */,
 				BB06A2EB2BEBAD65007B118A /* RichTextKit in Frameworks */,
 				BB4984082BC32BC8008D45B0 /* Metal.framework in Frameworks */,
+				BBB569172CFB0C1400B23479 /* MessageKit in Frameworks */,
 				BBC4BE952AED8F0A00D87B60 /* StoreKit.framework in Frameworks */,
 				BBB3CCA52BEADCB000BDB558 /* SwiftyMarkdown in Frameworks */,
 			);
@@ -1565,6 +1567,7 @@
 			packageProductDependencies = (
 				BBB3CCA42BEADCB000BDB558 /* SwiftyMarkdown */,
 				BB06A2EA2BEBAD65007B118A /* RichTextKit */,
+				BBB569162CFB0C1400B23479 /* MessageKit */,
 			);
 			productName = "Productivity Pro";
 			productReference = BB4CDD3D28D3C668009A409F /* Productivity Pro.app */;
@@ -1609,6 +1612,7 @@
 			packageReferences = (
 				BBB3CCA32BEADCB000BDB558 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */,
 				BB06A2E92BEBAD65007B118A /* XCRemoteSwiftPackageReference "RichTextKit" */,
+				BBB569152CFB0C1400B23479 /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = BB4CDD3E28D3C668009A409F /* Products */;
 			projectDirPath = "";
@@ -2311,6 +2315,14 @@
 				minimumVersion = 1.2.4;
 			};
 		};
+		BBB569152CFB0C1400B23479 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2323,6 +2335,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BBB3CCA32BEADCB000BDB558 /* XCRemoteSwiftPackageReference "SwiftyMarkdown" */;
 			productName = SwiftyMarkdown;
+		};
+		BBB569162CFB0C1400B23479 /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBB569152CFB0C1400B23479 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

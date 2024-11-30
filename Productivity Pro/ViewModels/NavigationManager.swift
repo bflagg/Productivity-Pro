@@ -16,6 +16,5 @@ enum ViewPresentation: CaseIterable {
     case finder
     case tasks
     case schedule
-    case subjects
-    case general
+    case settings
 }

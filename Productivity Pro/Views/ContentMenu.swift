@@ -41,7 +41,6 @@ struct ContentMenu: View {
             }
         }
         .padding(3)
-        .padding(.horizontal, 2)
         .background {
             ZStack {
                 Rectangle()
@@ -70,9 +69,7 @@ struct ContentMenu: View {
             return "checklist"
         case .schedule:
             return "calendar"
-        case .subjects:
-            return "tray.2"
-        case .general:
+        case .settings:
             return "gearshape"
         }
     }
@@ -87,9 +84,7 @@ struct ContentMenu: View {
             return "Aufgaben"
         case .schedule:
             return "Stundenplan"
-        case .subjects:
-            return "Fächer"
-        case .general:
+        case .settings:
             return "Einstellungen"
         }
     }
