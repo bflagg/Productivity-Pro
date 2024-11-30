@@ -20,28 +20,31 @@ struct ContentView: View {
     
     @State var toolManager: ToolManager = .init()
     @State var subviewManager: SubviewManager = .init()
-    @State var navigationManager: NavigationManager = .init()
     
     var body: some View {
-        TabView(selection: $navigationManager.selection) {
-            Tab.init(value: ViewPresentation.finder) {
+        TabView() {
+            Tab {
                 FileSystemView(contentObjects: contentObjects)
-                    .toolbarVisibility(.hidden, for: .tabBar)
+            } label: {
+                Image(systemName: "doc.fill")
             }
             
-            Tab.init(value: ViewPresentation.tasks) {
+            Tab {
                 HomeworkView(tasks: tasks)
-                    .toolbarVisibility(.hidden, for: .tabBar)
+            } label: {
+                Image(systemName: "checklist")
             }
-            
-            Tab.init(value: ViewPresentation.schedule) {
+
+            Tab {
                 ScheduleViewContainer()
-                    .toolbarVisibility(.hidden, for: .tabBar)
+            } label: {
+                Image(systemName: "calendar")
             }
             
-            Tab.init(value: ViewPresentation.settings) {
+            Tab {
                 PPSettingsView()
-                    .toolbarVisibility(.hidden, for: .tabBar)
+            } label: {
+                Image(systemName: "gearshape")
             }
         }
         .disabled(toolManager.showProgress)
@@ -59,9 +62,6 @@ struct ContentView: View {
                     .transition(.push(from: .bottom))
             }
         }
-        .overlay {
-            ContentMenu()
-        }
         .animation(.smooth(duration: 0.2), value: toolManager.showProgress)
         .sheet(isPresented: $subviewManager.sharePDFView) {
             SharePDFView()
@@ -77,7 +77,6 @@ struct ContentView: View {
         }
         .environment(toolManager)
         .environment(subviewManager)
-        .environment(navigationManager)
     }
     
     @MainActor func review() {

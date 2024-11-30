@@ -234,7 +234,6 @@
 		BBC498D12AF1A3CA008FC5BA /* ShapeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F75F22996D06200C0F140 /* ShapeModel.swift */; };
 		BBC4BE952AED8F0A00D87B60 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC4BE892AED7BBE00D87B60 /* StoreKit.framework */; };
 		BBC4BE972AED9FDF00D87B60 /* AdaptiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4BE962AED9FDF00D87B60 /* AdaptiveView.swift */; };
-		BBC69AFF2CF7D27400015FCA /* ContentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC69AFE2CF7D27300015FCA /* ContentMenu.swift */; };
 		BBC7B9742A18F09100D496CB /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC7B9732A18F09100D496CB /* ItemView.swift */; };
 		BBC7B9792A1988FA00D496CB /* DragAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC7B9782A1988FA00D496CB /* DragAnchor.swift */; };
 		BBC7B97B2A19896A00D496CB /* ToolViewMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC7B97A2A19896A00D496CB /* ToolViewMethods.swift */; };
@@ -551,7 +550,6 @@
 		BBC2C90629C5CFB40044B201 /* SnapItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapItemView.swift; sourceTree = "<group>"; };
 		BBC4BE892AED7BBE00D87B60 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BBC4BE962AED9FDF00D87B60 /* AdaptiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveView.swift; sourceTree = "<group>"; };
-		BBC69AFE2CF7D27300015FCA /* ContentMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMenu.swift; sourceTree = "<group>"; };
 		BBC7B9732A18F09100D496CB /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		BBC7B9782A1988FA00D496CB /* DragAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAnchor.swift; sourceTree = "<group>"; };
 		BBC7B97A2A19896A00D496CB /* ToolViewMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolViewMethods.swift; sourceTree = "<group>"; };
@@ -924,7 +922,6 @@
 			isa = PBXGroup;
 			children = (
 				BB6701572AADEFA7001F468A /* ContentView.swift */,
-				BBC69AFE2CF7D27300015FCA /* ContentMenu.swift */,
 				BB4A93DE2AAF556900C3AED6 /* ScheduleView */,
 				BB4A93DF2AAF557B00C3AED6 /* HomeworkView */,
 				BB6BFA2129048BBE002D09FD /* SettingsView */,
@@ -1821,7 +1818,6 @@
 				BBAF6D0E2BD4934000FAA524 /* PPBookModel.swift in Sources */,
 				BB9BFB6B2AC7807D00255293 /* CreateNoteView.swift in Sources */,
 				BB9367772AC9D3C50096F20E /* PPStrokeType.swift in Sources */,
-				BBC69AFF2CF7D27400015FCA /* ContentMenu.swift in Sources */,
 				BBD930FC2B21133600A37F95 /* SharePDFView.swift in Sources */,
 				BBADD13B2A5106750075B825 /* OverviewRowMethods.swift in Sources */,
 				BB47057C2B93923A009A5FCD /* PPAnglePicker.swift in Sources */,
