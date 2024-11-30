@@ -34,6 +34,7 @@ struct ContentView: View {
             } label: {
                 Image(systemName: "checklist")
             }
+            .badge(tasks.count)
 
             Tab {
                 ScheduleViewContainer()
